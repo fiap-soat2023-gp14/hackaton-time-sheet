@@ -1,6 +1,6 @@
 # compiled output
-./dist
-./node_modules
+dist
+node_modules
 
 # Logs
 logs
@@ -16,8 +16,8 @@ lerna-debug.log*
 **.DS_Store?
 
 # Tests
-/coverage
-/.nyc_output
+coverage
+.nyc_output
 
 # IDEs and editors
 /.idea
@@ -38,7 +38,6 @@ lerna-debug.log*
 # Environment
 .env
 .env.production
-/fiap-application/.idea/
 
 # Yarn
 .pnp.*
@@ -50,7 +49,6 @@ yarn.lockgit co
 !.yarn/sdks
 !.yarn/versions
 
-/volume/
-node_modules
+volume/
 
 

@@ -2,12 +2,11 @@
 
 ## Description
 
-Este Microserviço é reponsável por gerenciar os pedidos que são realizados na lanchonete.
+Este Microserviço é reponsável por gerenciar os registros de ponto dos usuários funcionários de uma empresa.
 Ele possuis as funções de:
-  - Fazer checkout de um pedido
-  - Listar pedidos
-  - Receber callback de pagamento
-  - E solicitar anonimização dos dados de um usuário
+  - Registrar ponto
+  - Exibir pontos do usuário
+  - E receber solicitação de emissão de relatório de folha de ponto
 
 ## Installation
 
@@ -17,9 +16,9 @@ $ yarn install
 
 ## Running the app
 
-Para rodar a aplicação localmente, é necessário possuir o MongoDB rodando e as filas no SQS (order-request e order-response) usadas para coreagrafia da SAGA de pagamento do pedido.
+Para rodar a aplicação localmente, é necessário possuir o MongoDB rodando e a fila report-request no SQS.
 
-Com o banco disponível, a base fiap criada, e as filas configuradas devemos atualizar o arquivo local.env com as cofigurações.
+Com o banco disponível, a base timeSheet criada, e a fila configurada devemos atualizar o arquivo local.env com as cofigurações.
 
 ```bash
 # load configs to env
