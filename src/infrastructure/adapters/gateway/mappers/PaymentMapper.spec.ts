@@ -1,16 +1,16 @@
 import { PaymentMapper } from './PaymentMapper';
-import { Order } from '../../../../core/domain/entities/Order';
+import { TimeRecord } from '../../../../core/domain/entities/TimeRecord';
 import { OrderMock } from '../../../mocks/OrderMock';
-import { PaymentFeedbackDTO } from '../../../../core/application/dto/PaymentFeedbackDTO';
+import { ReportRequestDTO } from '../../../../core/application/dto/ReportRequestDTO';
 
 describe('PaymentMapper', () => {
   describe('toPaymnent', () => {
     it('should return a PaymentFeedbackDTO object with correct values', async () => {
       // Arrange
-      const order: Order = await OrderMock.getOrder();
+      const order: TimeRecord = await OrderMock.getOrder();
 
       // Act
-      const result: PaymentFeedbackDTO = PaymentMapper.toPaymnent(order);
+      const result: ReportRequestDTO = PaymentMapper.toPaymnent(order);
 
       // Assert
       expect(result.id).toBeDefined();
@@ -21,10 +21,10 @@ describe('PaymentMapper', () => {
 
     it('should generate a unique id if the order does not have an id', async () => {
       // Arrange
-      const order: Order = await OrderMock.getOrder();
+      const order: TimeRecord = await OrderMock.getOrder();
 
       // Act
-      const result: PaymentFeedbackDTO = PaymentMapper.toPaymnent(order);
+      const result: ReportRequestDTO = PaymentMapper.toPaymnent(order);
 
       // Assert
       expect(result.id).toBeDefined();

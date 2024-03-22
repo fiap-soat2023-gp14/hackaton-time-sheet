@@ -1,5 +1,5 @@
 import PaymentGateway from './PaymentGateway';
-import { PaymentFeedbackDTO } from '../../../core/application/dto/PaymentFeedbackDTO';
+import { ReportRequestDTO } from '../../../core/application/dto/ReportRequestDTO';
 import { PaymentMock } from '../../mocks/PaymentMock';
 import {MessageProducer} from "../external/MessageProducer";
 import {Test, TestingModule} from "@nestjs/testing";
@@ -34,7 +34,7 @@ describe('PaymentGateway', () => {
   describe('receivePaymentFeedback', () => {
     it('should send payment feedback to the server with the correct parameters', async () => {
       // Arrange
-      const paymentFeedbackDTO: PaymentFeedbackDTO =
+      const paymentFeedbackDTO: ReportRequestDTO =
         PaymentMock.getPaymentFeedback();
 
 
@@ -50,7 +50,7 @@ describe('PaymentGateway', () => {
 
     it('should throw an error if there is an error receiving payment feedback', async () => {
       // Arrange
-      const paymentFeedbackDTO: PaymentFeedbackDTO =
+      const paymentFeedbackDTO: ReportRequestDTO =
         PaymentMock.getPaymentFeedback();
       const expectedErrorMessage = 'Error receiving payment feedback';
       (messageProducer.sendMessage as jest.Mock).mockRejectedValueOnce(

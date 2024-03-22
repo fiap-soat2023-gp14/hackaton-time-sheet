@@ -1,8 +1,8 @@
 import { OrderController } from './OrderController';
 import { IConnection } from '../adapters/external/IConnection';
 import { OrderStatus } from '../../core/domain/enums/OrderStatus';
-import OrderUseCase from 'src/core/application/usecase/OrderUseCase';
-import { Order } from '../../core/domain/entities/Order';
+import TimeSheetUseCase from 'src/core/application/usecase/TimeSheetUseCase';
+import { TimeRecord } from '../../core/domain/entities/TimeRecord';
 import { OrderResponseDTO } from '../../core/application/dto/OrderResponseDTO';
 import { OrderMock } from '../mocks/OrderMock';
 import {MessageProducer} from "../adapters/external/MessageProducer";
@@ -29,7 +29,7 @@ describe('OrderController', () => {
 
       const expectedOrderResponse = OrderMock.getOrderDTO();
       jest
-        .spyOn(OrderUseCase, 'createOrder')
+        .spyOn(TimeSheetUseCase, 'createRecord')
         .mockResolvedValueOnce(orderMockResolver);
 
       // Call the method under test
@@ -54,7 +54,7 @@ describe('OrderController', () => {
       const orderMockResolver = OrderMock.getOrder();
       const expectedOrderResponse = OrderMock.getOrderDTO();
       jest
-        .spyOn(OrderUseCase, 'updateOrder')
+        .spyOn(TimeSheetUseCase, 'updateOrder')
         .mockResolvedValueOnce(orderMockResolver);
 
       // Call the method under test
@@ -76,12 +76,12 @@ describe('OrderController', () => {
       };
 
       // Mock the expected return value
-      const mockedOrderResponseList: Order[] = await OrderMock.getOrderList();
+      const mockedOrderResponseList: TimeRecord[] = await OrderMock.getOrderList();
 
       const expectedOrderResponseList: OrderResponseDTO[] =
         await OrderMock.getExpectedOrderList();
       jest
-        .spyOn(OrderUseCase, 'getAllOrders')
+        .spyOn(TimeSheetUseCase, 'getAllRecordsByEmployeeId')
         .mockResolvedValueOnce(mockedOrderResponseList);
 
       // Call the method under test
@@ -103,11 +103,11 @@ describe('OrderController', () => {
       };
 
       // Mock the expected return value
-      const mockedOrderResponseList: Order[] = await OrderMock.getOrderList();
+      const mockedOrderResponseList: TimeRecord[] = await OrderMock.getOrderList();
       const expectedOrderResponseList: OrderResponseDTO[] =
         await OrderMock.getExpectedOrderList();
       jest
-        .spyOn(OrderUseCase, 'getSortedOrders')
+        .spyOn(TimeSheetUseCase, 'getSortedOrders')
         .mockResolvedValueOnce(mockedOrderResponseList);
 
       // Call the method under test
@@ -123,11 +123,11 @@ describe('OrderController', () => {
 
   describe('getOrderById', () => {
     it('should get order by id and return the order response', async () => {
-      const mockedOrderResponseList: Order = await OrderMock.getOrder();
+      const mockedOrderResponseList: TimeRecord = await OrderMock.getOrder();
       const expectedOrderResponseList: OrderResponseDTO =
         OrderMock.getOrderDTO();
       jest
-        .spyOn(OrderUseCase, 'getOrderById')
+        .spyOn(TimeSheetUseCase, 'getOrderById')
         .mockResolvedValueOnce(mockedOrderResponseList);
 
       // Call the method under test

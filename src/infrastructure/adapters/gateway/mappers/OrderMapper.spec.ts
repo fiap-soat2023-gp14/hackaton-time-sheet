@@ -1,16 +1,16 @@
 import { OrderMapper } from './OrderMapper';
 import { OrderMock } from '../../../mocks/OrderMock';
-import { Order } from '../../../../core/domain/entities/Order';
+import { TimeRecord } from '../../../../core/domain/entities/TimeRecord';
 import { OrderEntityStatus } from '../enums/OrderEntityStatus';
 import { OrderEntity } from '../entity/OrderEntity';
 import { OrderStatus } from '../../../../core/domain/enums/OrderStatus';
 import { Money } from '../../../../core/domain/valueObjects/Money';
-import { CPF } from '../../../../core/domain/valueObjects/Cpf';
+import { EmployeeId } from '../../../../core/domain/valueObjects/EmployeeId';
 
 describe('OrderMapper', () => {
   describe('toEntity', () => {
     it('should convert an Order object to an OrderEntity object', async () => {
-      const order: Order = await OrderMock.getOrder();
+      const order: TimeRecord = await OrderMock.getOrder();
 
       const orderEntity = OrderMapper.toEntity(order);
 
@@ -61,7 +61,7 @@ describe('OrderMapper', () => {
           id: orderEntity.customer._id,
           name: orderEntity.customer.name,
           email: orderEntity.customer.email,
-          cpf: await CPF.create(orderEntity.customer.cpf),
+          cpf: await EmployeeId.create(orderEntity.customer.cpf),
           createdAt: orderEntity.customer.createdAt,
           phone: orderEntity.customer.phone,
           updatedAt: orderEntity.customer.updatedAt,

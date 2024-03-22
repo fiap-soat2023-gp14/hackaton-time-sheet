@@ -1,8 +1,8 @@
-import { Order, OrderItem } from '../../domain/entities/Order';
+import { TimeRecord, OrderItem } from '../../domain/entities/TimeRecord';
 import { OrderStatus } from '../../domain/enums/OrderStatus';
-import { OrderCreationDTO } from '../dto/OrderCreationDTO';
+import { TimeRecordCreationDTO } from '../dto/TimeRecordCreationDTO';
 import {
-  OrderItemResponseDTO,
+  DailyRecordResponseDTO,
   OrderResponseDTO,
 } from '../dto/OrderResponseDTO';
 import ProductAdapter from './ProductAdapter';
@@ -10,7 +10,7 @@ import { UserAdapter } from './UserAdapter';
 import User from '../../domain/entities/User';
 
 export default class OrderAdapter {
-  static async toDomain(orderCreationDTO: OrderCreationDTO): Promise<Order> {
+  static async toDomain(orderCreationDTO: TimeRecordCreationDTO): Promise<TimeRecord> {
     const orderItemList = orderCreationDTO.items.map((item) => {
       return OrderItem.create(item.productId, item.observation, item.quantity);
     });
@@ -29,7 +29,7 @@ export default class OrderAdapter {
     };
   }
 
-  static toDTO(order: Order): OrderResponseDTO {
+  static toDTO(order: TimeRecord): OrderResponseDTO {
     return {
       id: order.id,
       customer: order.customer
@@ -44,7 +44,7 @@ export default class OrderAdapter {
     };
   }
 
-  private static itemToDTO(item: OrderItem): OrderItemResponseDTO {
+  private static itemToDTO(item: OrderItem): DailyRecordResponseDTO {
     return {
       product: ProductAdapter.toDTO(item.product),
       observation: item.observation,
@@ -52,11 +52,11 @@ export default class OrderAdapter {
     };
   }
 
-  static itemsToDTO(items: OrderItem[]): OrderItemResponseDTO[] {
+  static itemsToDTO(items: OrderItem[]): DailyRecordResponseDTO[] {
     return items.map((item) => this.itemToDTO(item));
   }
 
-  static toDTOList(orders: Order[]): OrderResponseDTO[] {
+  static toDTOList(orders: TimeRecord[]): OrderResponseDTO[] {
     return orders.map((order) => this.toDTO(order));
   }
 }

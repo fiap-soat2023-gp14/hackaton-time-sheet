@@ -6,7 +6,7 @@ import { HttpStatus } from '@nestjs/common';
 import { ProductCategory } from '../../core/domain/enums/ProductCategory';
 import { OrderController } from '../controller/OrderController';
 import { Test, TestingModule } from '@nestjs/testing';
-import { OrderCreationDTO } from '../../core/application/dto/OrderCreationDTO';
+import { TimeRecordCreationDTO } from '../../core/application/dto/TimeRecordCreationDTO';
 import {QueuesModule} from "../adapters/external/queues.module";
 
 jest.mock('../controller/OrderController');
@@ -238,7 +238,7 @@ describe('OrderApi', () => {
           authorization: 'mockToken',
         },
       };
-      const body: OrderCreationDTO = {
+      const body: TimeRecordCreationDTO = {
         customerId: 'user456',
         items: [
           {

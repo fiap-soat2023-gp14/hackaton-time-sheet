@@ -1,7 +1,7 @@
 import { ProductCategory } from '../../core/domain/enums/ProductCategory';
 import { OrderStatus } from '../../core/domain/enums/OrderStatus';
-import { Order } from '../../core/domain/entities/Order';
-import { CPF } from '../../core/domain/valueObjects/Cpf';
+import { TimeRecord } from '../../core/domain/entities/TimeRecord';
+import { EmployeeId } from '../../core/domain/valueObjects/EmployeeId';
 import { Money } from '../../core/domain/valueObjects/Money';
 import { OrderEntity } from '../adapters/gateway/entity/OrderEntity';
 import { OrderEntityStatus } from '../adapters/gateway/enums/OrderEntityStatus';
@@ -17,7 +17,7 @@ export class UserMock {
       id: '42',
       email: 'test@test.com',
       name: 'test untario',
-      cpf: await CPF.create('123456789'),
+      cpf: await EmployeeId.create('123456789'),
       phone: '123456789',
       createdAt: new Date('2024-01-26T17:41:00Z'),
       updatedAt: new Date('2024-01-26T17:41:00Z'),
@@ -86,7 +86,7 @@ export class UserMock {
         id: '42',
         email: 'test@test.com',
         name: 'test untario',
-        cpf: await CPF.create('123456789'),
+        cpf: await EmployeeId.create('123456789'),
         phone: '123456789',
         createdAt: new Date('2024-01-26T17:41:00Z'),
         updatedAt: new Date('2024-01-26T17:41:00Z'),

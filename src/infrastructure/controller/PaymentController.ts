@@ -1,15 +1,15 @@
-import { PaymentFeedbackDTO } from '../../core/application/dto/PaymentFeedbackDTO';
-import { PaymentUseCase } from '../../core/application/usecase/PaymentUseCase';
-import { IPaymentGateway } from '../../core/application/repositories/IPaymentGateway';
+import { ReportRequestDTO } from '../../core/application/dto/ReportRequestDTO';
+import { ReportUseCase } from '../../core/application/usecase/ReportUseCase';
+import { IReportGateway } from '../../core/application/repositories/IReportGateway';
 import { MessageProducer } from '../adapters/external/MessageProducer';
 
 export class PaymentController {
   public static async receivePaymentFeedback(
-    paymentFeedbackDTO: PaymentFeedbackDTO,
-    paymentGateway: IPaymentGateway,
+    paymentFeedbackDTO: ReportRequestDTO,
+    paymentGateway: IReportGateway,
     messageProducer: MessageProducer
   ): Promise<void> {
-    await PaymentUseCase.processPayment(
+    await ReportUseCase.processPayment(
       paymentFeedbackDTO,
       paymentGateway,
       messageProducer,

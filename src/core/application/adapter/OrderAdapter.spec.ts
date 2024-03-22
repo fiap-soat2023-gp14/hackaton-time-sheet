@@ -1,9 +1,9 @@
 import OrderAdapter from 'src/core/application/adapter/OrderAdapter';
-import { OrderItem } from 'src/core/domain/entities/Order';
+import { OrderItem } from 'src/core/domain/entities/TimeRecord';
 import User from 'src/core/domain/entities/User';
 import { OrderStatus } from 'src/core/domain/enums/OrderStatus';
 import { ProductCategory } from 'src/core/domain/enums/ProductCategory';
-import { CPF } from 'src/core/domain/valueObjects/Cpf';
+import { EmployeeId } from 'src/core/domain/valueObjects/EmployeeId';
 import { Money } from 'src/core/domain/valueObjects/Money';
 // Import necessary dependencies for testing (e.g., testing framework, mocks)
 
@@ -13,7 +13,7 @@ describe('OrderAdapter', () => {
 
   beforeEach(async () => {
     price = await Money.create(100);
-    cpf = await CPF.create('12345678910');
+    cpf = await EmployeeId.create('12345678910');
   });
 
   describe('toDomain', () => {

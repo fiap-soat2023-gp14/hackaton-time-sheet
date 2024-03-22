@@ -1,5 +1,5 @@
 import { v4 } from 'uuid';
-import { Order, OrderItem } from '../../../../core/domain/entities/Order';
+import { TimeRecord, OrderItem } from '../../../../core/domain/entities/TimeRecord';
 import { Money } from '../../../../core/domain/valueObjects/Money';
 import { OrderEntity, OrderItemEntity } from '../entity/OrderEntity';
 import ProductMapper from './ProductMapper';
@@ -8,7 +8,7 @@ import { OrderStatus } from '../../../../core/domain/enums/OrderStatus';
 import { OrderEntityStatus } from '../enums/OrderEntityStatus';
 
 export class OrderMapper {
-  static toEntity(order: Order): OrderEntity {
+  static toEntity(order: TimeRecord): OrderEntity {
     return {
       _id: order.id || v4(),
       customer: order.customer
@@ -39,7 +39,7 @@ export class OrderMapper {
     );
   }
 
-  static async toDomain(orderEntity: OrderEntity): Promise<Order> {
+  static async toDomain(orderEntity: OrderEntity): Promise<TimeRecord> {
     return {
       id: orderEntity._id,
       customer: orderEntity.customer
@@ -54,7 +54,7 @@ export class OrderMapper {
     };
   }
 
-  static async toDomainList(orders: Array<OrderEntity>): Promise<Order[]> {
+  static async toDomainList(orders: Array<OrderEntity>): Promise<TimeRecord[]> {
     return Promise.all(orders.map((order) => this.toDomain(order)));
   }
 

@@ -1,21 +1,21 @@
 import { ProductCategory } from '../../core/domain/enums/ProductCategory';
 import { OrderStatus } from '../../core/domain/enums/OrderStatus';
-import { Order } from '../../core/domain/entities/Order';
-import { CPF } from '../../core/domain/valueObjects/Cpf';
+import { TimeRecord } from '../../core/domain/entities/TimeRecord';
+import { EmployeeId } from '../../core/domain/valueObjects/EmployeeId';
 import { Money } from '../../core/domain/valueObjects/Money';
 import { OrderEntity } from '../adapters/gateway/entity/OrderEntity';
 import { OrderEntityStatus } from '../adapters/gateway/enums/OrderEntityStatus';
 import { OrderResponseDTO } from '../../core/application/dto/OrderResponseDTO';
 
 export class OrderMock {
-  public static async getOrder(): Promise<Order> {
-    const orderMock: Order = {
+  public static async getOrder(): Promise<TimeRecord> {
+    const orderMock: TimeRecord = {
       id: '1',
       customer: {
         id: '42',
         email: 'test@test.com',
         name: 'test untario',
-        cpf: await CPF.create('12345678910'),
+        cpf: await EmployeeId.create('12345678910'),
         phone: '123456789',
         createdAt: new Date('2024-01-26T17:41:00Z'),
         updatedAt: new Date('2024-01-26T17:41:00Z'),
@@ -44,15 +44,15 @@ export class OrderMock {
     return orderMock;
   }
 
-  public static async getOrderList(): Promise<Order[]> {
-    const orderMock: Order[] = [
+  public static async getOrderList(): Promise<TimeRecord[]> {
+    const orderMock: TimeRecord[] = [
       {
         id: '1',
         customer: {
           id: '42',
           email: 'test@test.com',
           name: 'test untario',
-          cpf: await CPF.create('12345678910'),
+          cpf: await EmployeeId.create('12345678910'),
           phone: '123456789',
           createdAt: new Date('2024-01-26T17:41:00Z'),
         },

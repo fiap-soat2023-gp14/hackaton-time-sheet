@@ -1,16 +1,16 @@
-import PaymentAdapter from 'src/core/application/adapter/PaymentAdapter';
+import ReportRequestAdapter from 'src/core/application/adapter/ReportRequestAdapter';
 import { MessageHandler } from './MessageConsumer';
 import { MessageProducer } from './MessageProducer';
 import { Test, TestingModule } from '@nestjs/testing';
 import {IConnection} from "./IConnection";
 import {MongoConnection} from "./MongoConnection";
-import OrderUseCase from "../../../core/application/usecase/OrderUseCase";
+import TimeSheetUseCase from "../../../core/application/usecase/TimeSheetUseCase";
 import {OrderStatus} from "../../../core/domain/enums/OrderStatus";
 
  // Assuming it's in the same directory
 jest.mock('./MessageProducer'); // Mock MessageProducer to avoid external calls
-jest.mock('src/core/application/adapter/PaymentAdapter'); // Mock PaymentAdapter to isolate its behavior
-jest.mock('src/core/application/usecase/OrderUseCase'); // Mock PaymentUseCase to focus on MessageHandler logic
+jest.mock('src/core/application/adapter/ReportRequestAdapter'); // Mock PaymentAdapter to isolate its behavior
+jest.mock('src/core/application/usecase/TimeSheetUseCase'); // Mock PaymentUseCase to focus on MessageHandler logic
 
 describe('MessageHandler', () => {
     let messageHandler: MessageHandler;
@@ -34,11 +34,11 @@ describe('MessageHandler', () => {
         const messageBody = '{"paymentId": 123, "status": "APPROVED"}';
 
         // Mock external functions
-        (PaymentAdapter.toDomain as jest.Mock).mockResolvedValueOnce({
+        (ReportRequestAdapter.toDomain as jest.Mock).mockResolvedValueOnce({
             paymentId: 123,
             status: 'APPROVED'
         });
-        (OrderUseCase.updateOrder as jest.Mock).mockResolvedValueOnce({});
+        (TimeSheetUseCase.updateOrder as jest.Mock).mockResolvedValueOnce({});
 
         // Create a mock AWS.Message object
         const message= { Body: messageBody };
@@ -47,6 +47,6 @@ describe('MessageHandler', () => {
         await messageHandler.handleMessage(message);
 
         // Assert expected behavior
-        expect(OrderUseCase.updateOrder).toHaveBeenCalledTimes(1);
+        expect(TimeSheetUseCase.updateOrder).toHaveBeenCalledTimes(1);
     });
 });

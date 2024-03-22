@@ -1,9 +1,9 @@
 import { v4 } from 'uuid';
-import { Order } from '../../../../core/domain/entities/Order';
-import { PaymentFeedbackDTO } from '../../../../core/application/dto/PaymentFeedbackDTO';
+import { TimeRecord } from '../../../../core/domain/entities/TimeRecord';
+import { ReportRequestDTO } from '../../../../core/application/dto/ReportRequestDTO';
 
 export class PaymentMapper {
-  static toPaymnent(order: Order): PaymentFeedbackDTO {
+  static toPaymnent(order: TimeRecord): ReportRequestDTO {
     const id = order.id || v4();
     return {
       id: id,

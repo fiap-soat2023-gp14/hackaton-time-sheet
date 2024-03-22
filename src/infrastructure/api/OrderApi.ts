@@ -11,7 +11,7 @@ import {
   Req,
   Res,
 } from '@nestjs/common';
-import { OrderCreationDTO } from 'src/core/application/dto/OrderCreationDTO';
+import { TimeRecordCreationDTO } from 'src/core/application/dto/TimeRecordCreationDTO';
 import { OrderResponseDTO } from 'src/core/application/dto/OrderResponseDTO';
 import { OrderStatus } from 'src/core/domain/enums/OrderStatus';
 import { OrderController } from '../controller/OrderController';
@@ -60,7 +60,7 @@ export default class OrderApi {
   public async createOrder(
     @Res() response,
     @Req() req,
-    @Body() body: OrderCreationDTO,
+    @Body() body: TimeRecordCreationDTO,
   ) {
     const orderController = new OrderController();
     const order = await orderController.createOrder(

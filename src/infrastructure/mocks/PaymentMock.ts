@@ -1,8 +1,8 @@
-import { PaymentFeedbackDTO } from '../../core/application/dto/PaymentFeedbackDTO';
+import { ReportRequestDTO } from '../../core/application/dto/ReportRequestDTO';
 
 export class PaymentMock {
-  public static getPaymentFeedback(): PaymentFeedbackDTO {
-    const payment: PaymentFeedbackDTO = {
+  public static getPaymentFeedback(): ReportRequestDTO {
+    const payment: ReportRequestDTO = {
       id: 'pay-10',
       type: 'payment',
       status: 'approved',

@@ -1,15 +1,15 @@
-import { IPaymentGateway } from '../../../core/application/repositories/IPaymentGateway';
-import { PaymentFeedbackDTO } from '../../../core/application/dto/PaymentFeedbackDTO';
+import { IReportGateway } from '../../../core/application/repositories/IReportGateway';
+import { ReportRequestDTO } from '../../../core/application/dto/ReportRequestDTO';
 import {MessageProducer} from "../external/MessageProducer";
 
-export default class PaymentGateway implements IPaymentGateway {
+export default class PaymentGateway implements IReportGateway {
   clusterUrl: string;
   constructor() {
     this.clusterUrl = process.env.CLUSTER_URL;
   }
 
   public async receivePaymentFeedback(
-    paymentFeedbackDTO: PaymentFeedbackDTO,
+    paymentFeedbackDTO: ReportRequestDTO,
     messageProducer: MessageProducer,
   ): Promise<void> {
 

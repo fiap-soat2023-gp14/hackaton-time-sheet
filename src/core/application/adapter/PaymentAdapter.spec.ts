@@ -1,16 +1,15 @@
-import { PaymentFeedbackDTO } from '../dto/PaymentFeedbackDTO';
-import PaymentAdapter from './PaymentAdapter';
+import { ReportRequestDTO } from '../dto/ReportRequestDTO';
+import ReportRequestAdapter from './ReportRequestAdapter';
 import { PaymentMock } from '../../../infrastructure/mocks/PaymentMock';
-import { PaymentFeedback } from '../../domain/entities/PaymentFeedback';
 
 describe('PaymentAdapter', () => {
   describe('toDomain', () => {
     it('should convert PaymentFeedbackDTO to PaymentFeedback domain object', async () => {
       // Arrange
-      const paymentFeedbackDTO: PaymentFeedbackDTO =
+      const paymentFeedbackDTO: ReportRequestDTO =
         PaymentMock.getPaymentFeedback();
       // Act
-      const result: PaymentFeedback = await PaymentAdapter.toDomain(
+      const result: PaymentFeedback = await ReportRequestAdapter.toDomain(
         paymentFeedbackDTO,
       );
 

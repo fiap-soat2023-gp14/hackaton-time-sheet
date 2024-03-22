@@ -1,19 +1,16 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class PaymentMetadataDTO {
+export class ReportRequestDTO {
   @IsString()
   @IsNotEmpty()
-  id: string;
-}
-
-export class PaymentFeedbackDTO {
-  id: string;
+  employeeId: string;
   @IsString()
   @IsNotEmpty()
-  type: string;
+  email: string;
   @IsString()
   @IsNotEmpty()
-  status: string;
+  month: string;
   @IsNotEmpty()
-  data: PaymentMetadataDTO;
+  @IsNotEmpty()
+  year: string;
 }
