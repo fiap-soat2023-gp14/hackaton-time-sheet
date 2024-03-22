@@ -12,7 +12,7 @@ import {
   Res,
 } from '@nestjs/common';
 import { TimeRecordCreationDTO } from 'src/core/application/dto/TimeRecordCreationDTO';
-import { OrderResponseDTO } from 'src/core/application/dto/OrderResponseDTO';
+import { TimeRecordResponseDTO } from 'src/core/application/dto/TimeRecordResponseDTO';
 import { OrderStatus } from 'src/core/domain/enums/OrderStatus';
 import { OrderController } from '../controller/OrderController';
 import { OrderStatusUpdateDTO } from '../../core/application/dto/OrderStatusUpdateDTO';
@@ -29,7 +29,7 @@ export default class OrderApi {
   public async getAllOrders(
     @Res() response,
     @Query('status') status: OrderStatus,
-  ): Promise<Array<OrderResponseDTO>> {
+  ): Promise<Array<TimeRecordResponseDTO>> {
     const params = status ? { status: status } : {};
     const orderController = new OrderController();
     const orders = await orderController.getAllOrders(
@@ -40,7 +40,7 @@ export default class OrderApi {
   }
 
   @Get('/sorted/')
-  public async getSorted(@Res() response): Promise<Array<OrderResponseDTO>> {
+  public async getSorted(@Res() response): Promise<Array<TimeRecordResponseDTO>> {
     const orderController = new OrderController();
     const orders = await orderController.getSortedOrders({}, this.dbConnection);
     return response.status(HttpStatus.OK).json(orders);
@@ -50,7 +50,7 @@ export default class OrderApi {
   public async getOrders(
     @Res() response,
     @Param('id') id: string,
-  ): Promise<OrderResponseDTO> {
+  ): Promise<TimeRecordResponseDTO> {
     const orderController = new OrderController();
     const order = await orderController.getOrderById(id, this.dbConnection);
     return response.status(HttpStatus.OK).json(order);
@@ -76,7 +76,7 @@ export default class OrderApi {
     @Res() response,
     @Param('id') id: string,
     @Body() body: OrderStatusUpdateDTO,
-  ): Promise<OrderResponseDTO> {
+  ): Promise<TimeRecordResponseDTO> {
     const orderController = new OrderController();
     const order = await orderController.updateOrder(
       id,

@@ -1,4 +1,4 @@
-import OrderAdapter from 'src/core/application/adapter/OrderAdapter';
+import TimeRecordAdapter from 'src/core/application/adapter/TimeRecordAdapter';
 import { OrderItem } from 'src/core/domain/entities/TimeRecord';
 import User from 'src/core/domain/entities/User';
 import { OrderStatus } from 'src/core/domain/enums/OrderStatus';
@@ -26,7 +26,7 @@ describe('OrderAdapter', () => {
         customerId: '42',
         extraItems: undefined,
       };
-      const result = await OrderAdapter.toDomain(orderCreationDTO);
+      const result = await TimeRecordAdapter.toDomain(orderCreationDTO);
 
       const orderItemList = orderCreationDTO.items.map((item) => {
         return OrderItem.create(
@@ -56,7 +56,7 @@ describe('OrderAdapter', () => {
         customerId: undefined,
         extraItems: undefined,
       };
-      const result = await OrderAdapter.toDomain(orderCreationDTO);
+      const result = await TimeRecordAdapter.toDomain(orderCreationDTO);
 
       const orderItemList = orderCreationDTO.items.map((item) => {
         return OrderItem.create(
@@ -81,7 +81,7 @@ describe('OrderAdapter', () => {
   });
 
   describe('toDTO', () => {
-    test('should create a valid OrderResponseDTO from an Order object', () => {
+    test('should create a valid TimeRecordResponseDTO from an Order object', () => {
       const order = {
         id: '1',
         customer: {
@@ -114,8 +114,8 @@ describe('OrderAdapter', () => {
         status: OrderStatus.RECEIVED,
         total: price,
       };
-      const dto = OrderAdapter.toDTO(order);
-      const itemsDTO = OrderAdapter.itemsToDTO(order.items);
+      const dto = TimeRecordAdapter.toDTO(order);
+      const itemsDTO = TimeRecordAdapter.itemsToDTO(order.items);
       expect(dto).toEqual({
         id: order.id,
         customer: {
@@ -134,7 +134,7 @@ describe('OrderAdapter', () => {
       });
     });
 
-    it('should create a valid OrderResponseDTO with a null customer', () => {
+    it('should create a valid TimeRecordResponseDTO with a null customer', () => {
       const order = {
         id: '1',
         customer: null,
@@ -159,8 +159,8 @@ describe('OrderAdapter', () => {
         status: OrderStatus.RECEIVED,
         total: price,
       };
-      const itemsDTO = OrderAdapter.itemsToDTO(order.items);
-      const dto = OrderAdapter.toDTO(order);
+      const itemsDTO = TimeRecordAdapter.itemsToDTO(order.items);
+      const dto = TimeRecordAdapter.toDTO(order);
 
       expect(dto).toEqual({
         id: order.id,

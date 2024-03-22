@@ -1,5 +1,5 @@
 import { PaymentController } from './PaymentController';
-import { PaymentMock } from '../mocks/PaymentMock';
+import { ReportRequestMock } from '../mocks/ReportRequestMock';
 import { ReportRequestDTO } from '../../core/application/dto/ReportRequestDTO';
 import { IReportGateway } from '../../core/application/repositories/IReportGateway';
 import PaymentGateway from '../adapters/gateway/PaymentGateway';
@@ -30,8 +30,8 @@ describe('PaymentController', () => {
   describe('receivePaymentFeedback', () => {
     it('should call PaymentUseCase.processPayment with the correct arguments', async () => {
       // Arrange
-      const paymentFeedbackDTO: ReportRequestDTO =
-        PaymentMock.getPaymentFeedback();
+      const paymentFeedbackDTO: ReportRequestMock =
+        ReportRequestDTO.getPaymentFeedback();
       const oauthToken = 'valid-token';
       const paymentGateway: IReportGateway = new PaymentGateway();
 

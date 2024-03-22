@@ -5,7 +5,7 @@ export class DailyRecordResponseDTO {
   records: string[];
 }
 
-export class OrderResponseDTO {
+export class TimeRecordResponseDTO {
   employeeId: string;
-  records: DailyRecordResponseDTO[];
+  timeSheet: DailyRecordResponseDTO[];
 }

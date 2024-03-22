@@ -5,7 +5,7 @@ import { EmployeeId } from '../../core/domain/valueObjects/EmployeeId';
 import { Money } from '../../core/domain/valueObjects/Money';
 import { OrderEntity } from '../adapters/gateway/entity/OrderEntity';
 import { OrderEntityStatus } from '../adapters/gateway/enums/OrderEntityStatus';
-import { OrderResponseDTO } from '../../core/application/dto/OrderResponseDTO';
+import { TimeRecordResponseDTO } from '../../core/application/dto/TimeRecordResponseDTO';
 
 export class OrderMock {
   public static async getOrder(): Promise<TimeRecord> {
@@ -81,8 +81,8 @@ export class OrderMock {
     return orderMock;
   }
 
-  public static async getExpectedOrderList(): Promise<OrderResponseDTO[]> {
-    const orderMock: OrderResponseDTO[] = [
+  public static async getExpectedOrderList(): Promise<TimeRecordResponseDTO[]> {
+    const orderMock: TimeRecordResponseDTO[] = [
       {
         id: '1',
         customer: {
@@ -152,7 +152,7 @@ export class OrderMock {
     };
   }
 
-  public static getOrderDTO(): OrderResponseDTO {
+  public static getOrderDTO(): TimeRecordResponseDTO {
     const expectedOrderResponse = {
       id: '1',
       customer: {

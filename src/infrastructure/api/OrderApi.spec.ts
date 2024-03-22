@@ -1,7 +1,7 @@
 import OrderApi from './OrderApi';
 import { IConnection } from '../adapters/external/IConnection';
 import { OrderStatus } from '../../core/domain/enums/OrderStatus';
-import { OrderResponseDTO } from '../../core/application/dto/OrderResponseDTO';
+import { TimeRecordResponseDTO } from '../../core/application/dto/TimeRecordResponseDTO';
 import { HttpStatus } from '@nestjs/common';
 import { ProductCategory } from '../../core/domain/enums/ProductCategory';
 import { OrderController } from '../controller/OrderController';
@@ -53,7 +53,7 @@ describe('OrderApi', () => {
   describe('getAllOrders', () => {
     it('should get all orders and return the order response list', async () => {
       const status = OrderStatus.RECEIVED;
-      const expectedOrders: OrderResponseDTO[] = [
+      const expectedOrders: TimeRecordResponseDTO[] = [
         {
           id: 'order123',
           status: OrderStatus.RECEIVED,
@@ -113,7 +113,7 @@ describe('OrderApi', () => {
 
   describe('getSorted', () => {
     it('should get sorted orders and return the order response list', async () => {
-      const expectedOrders: OrderResponseDTO[] = [
+      const expectedOrders: TimeRecordResponseDTO[] = [
         {
           id: 'order123',
           status: OrderStatus.RECEIVED,
@@ -174,7 +174,7 @@ describe('OrderApi', () => {
   describe('getOrders', () => {
     it('should get an order by ID and return the order response', async () => {
       const id = 'order123';
-      const expectedOrder: OrderResponseDTO = {
+      const expectedOrder: TimeRecordResponseDTO = {
         id: 'order123',
         status: OrderStatus.RECEIVED,
         customer: {
@@ -254,7 +254,7 @@ describe('OrderApi', () => {
         ],
         extraItems: 'Extra item details',
       };
-      const expectedOrder: OrderResponseDTO = {
+      const expectedOrder: TimeRecordResponseDTO = {
         id: 'order123',
         status: OrderStatus.RECEIVED,
         customer: {
@@ -317,7 +317,7 @@ describe('OrderApi', () => {
         id: 'order123',
         status: OrderStatus.RECEIVED,
       };
-      const expectedOrder: OrderResponseDTO = {
+      const expectedOrder: TimeRecordResponseDTO = {
         id: 'order123',
         status: OrderStatus.RECEIVED,
         customer: {

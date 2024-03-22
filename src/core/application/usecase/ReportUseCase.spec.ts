@@ -1,6 +1,6 @@
 import { ReportUseCase } from './ReportUseCase';
 import { ReportRequestDTO } from '../dto/ReportRequestDTO';
-import { PaymentMock } from '../../../infrastructure/mocks/PaymentMock';
+import { ReportRequestMock } from '../../../infrastructure/mocks/ReportRequestMock';
 import { IReportGateway } from '../repositories/IReportGateway';
 import {MessageProducer} from "../../../infrastructure/adapters/external/MessageProducer";
 

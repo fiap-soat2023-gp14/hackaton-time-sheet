@@ -3,7 +3,7 @@ import { IConnection } from '../adapters/external/IConnection';
 import { OrderStatus } from '../../core/domain/enums/OrderStatus';
 import TimeSheetUseCase from 'src/core/application/usecase/TimeSheetUseCase';
 import { TimeRecord } from '../../core/domain/entities/TimeRecord';
-import { OrderResponseDTO } from '../../core/application/dto/OrderResponseDTO';
+import { TimeRecordResponseDTO } from '../../core/application/dto/TimeRecordResponseDTO';
 import { OrderMock } from '../mocks/OrderMock';
 import {MessageProducer} from "../adapters/external/MessageProducer";
 
@@ -78,7 +78,7 @@ describe('OrderController', () => {
       // Mock the expected return value
       const mockedOrderResponseList: TimeRecord[] = await OrderMock.getOrderList();
 
-      const expectedOrderResponseList: OrderResponseDTO[] =
+      const expectedOrderResponseList: TimeRecordResponseDTO[] =
         await OrderMock.getExpectedOrderList();
       jest
         .spyOn(TimeSheetUseCase, 'getAllRecordsByEmployeeId')
@@ -104,7 +104,7 @@ describe('OrderController', () => {
 
       // Mock the expected return value
       const mockedOrderResponseList: TimeRecord[] = await OrderMock.getOrderList();
-      const expectedOrderResponseList: OrderResponseDTO[] =
+      const expectedOrderResponseList: TimeRecordResponseDTO[] =
         await OrderMock.getExpectedOrderList();
       jest
         .spyOn(TimeSheetUseCase, 'getSortedOrders')
@@ -124,7 +124,7 @@ describe('OrderController', () => {
   describe('getOrderById', () => {
     it('should get order by id and return the order response', async () => {
       const mockedOrderResponseList: TimeRecord = await OrderMock.getOrder();
-      const expectedOrderResponseList: OrderResponseDTO =
+      const expectedOrderResponseList: TimeRecordResponseDTO =
         OrderMock.getOrderDTO();
       jest
         .spyOn(TimeSheetUseCase, 'getOrderById')

@@ -3,6 +3,7 @@ import { ReportRequest } from "../../domain/entities/ReportRequest";
 import { EmployeeId } from "../../domain/valueObjects/EmployeeId";
 
 export default class ReportRequestAdapter {
+
   static async toDomain(
     reportRequestDTO: ReportRequestDTO,
   ): Promise<ReportRequest> {
