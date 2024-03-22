@@ -44,22 +44,4 @@ describe('MongoConnection', () => {
       );
     });
   });
-
-  // describe('getCollection', () => {
-  //   it('should return the specified collection', () => {
-  //     // Mock any necessary dependencies or setup test data
-  //
-  //     const collectionName = 'testCollection';
-  //     jest
-  //       .spyOn(mongoConnection.client.db, 'collection')
-  //       .mockRejectedValue(Collection);
-  //
-  //
-  //
-  //     const collection = mongoConnection.getCollection(collectionName);
-  //
-  //     // Assert that the returned collection is correct
-  //     expect(collection.collectionName).toBe(collectionName);
-  //   });
-  // });
 });

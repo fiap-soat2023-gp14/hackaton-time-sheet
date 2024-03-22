@@ -9,7 +9,7 @@ export class MongoConnection implements IConnection {
     this.client = new MongoClient(
       process.env.MONGODB_CONNECTION_STRING
         ? process.env.MONGODB_CONNECTION_STRING
-        : 'mongodb://localhost:27017/fiap',
+        : 'mongodb://localhost:27017/timeSheet',
       {
         tlsCAFile: 'global-bundle.pem',
       },

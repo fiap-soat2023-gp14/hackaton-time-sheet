@@ -30,8 +30,14 @@ describe('MessageProducer', () => {
 
     it('should send a message successfully', async () => {
         // Set up test data
-        const body = { id: 123, status: 'APPROVED' };
-        const expectedMessage = { id: 123, body: JSON.stringify(body) };
+        const body =
+            {
+                employeeId: "123456",
+                month: "03",
+                year: "2024",
+                email: "silvertonsg@gmail.com",
+            };
+        const expectedMessage = { id: "123456", body: JSON.stringify(body) };
 
         // Mock the SqsService.send method
         (sqsService.send as jest.Mock).mockResolvedValueOnce({});
@@ -41,7 +47,7 @@ describe('MessageProducer', () => {
 
         // Assert expected behavior
         expect(sqsService.send).toHaveBeenCalledTimes(1);
-        expect(sqsService.send).toHaveBeenCalledWith(config.AWS_PEDIDOS_QUEUE, expectedMessage);
+        expect(sqsService.send).toHaveBeenCalledWith(config.AWS_REPORTS_QUEUE, expectedMessage);
     });
 
 });

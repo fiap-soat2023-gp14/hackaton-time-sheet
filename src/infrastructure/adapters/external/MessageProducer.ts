@@ -7,13 +7,13 @@ export class MessageProducer {
     async sendMessage(body: any) {
 
         const message: any = {
-            id: body.id,
+            id: body.employeeId,
             body: JSON.stringify(body)
         }
         console.log('message', message);
 
         try {
-            await this.sqsService.send(config.AWS_PEDIDOS_QUEUE, message);
+            await this.sqsService.send(config.AWS_REPORTS_QUEUE, message);
         } catch (error) {
             console.log('error in producing message!', error);
         }

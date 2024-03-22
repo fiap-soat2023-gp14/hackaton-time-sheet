@@ -5,11 +5,10 @@ export default class TimeSheetUseCase {
 
   public static async getAllRecordsByEmployeeId(
     employeeId: string,
-    params: any,
     gateway: ITimeRecordGateway,
   ): Promise<Array<TimeRecord>> {
 
-    return await gateway.getAllByEmployeeId(employeeId, params);
+    return await gateway.getAllByEmployeeId(employeeId);
   }
 
   public static async createRecord(
