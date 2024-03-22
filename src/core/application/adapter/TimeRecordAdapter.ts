@@ -1,8 +1,8 @@
-import {TimeRecordCreationDTO} from '../dto/TimeRecordCreationDTO';
-import {TimeRecord} from "../../domain/entities/TimeRecord";
-import {EmployeeId} from "../../domain/valueObjects/EmployeeId";
-import {DailyRecordResponseDTO, TimeRecordResponseDTO} from "../dto/TimeRecordResponseDTO";
-import {RecordType} from "../../domain/enums/RecordType";
+import { TimeRecordCreationDTO } from '../dto/TimeRecordCreationDTO';
+import { TimeRecord } from "../../domain/entities/TimeRecord";
+import { EmployeeId } from "../../domain/valueObjects/EmployeeId";
+import { TimeRecordResponseDTO } from "../dto/TimeRecordResponseDTO";
+import { RecordType } from "../../domain/enums/RecordType";
 
 export default class TimeRecordAdapter {
   static async toDomain(timeRecordCreationDTO: TimeRecordCreationDTO): Promise<TimeRecord> {
@@ -16,13 +16,11 @@ export default class TimeRecordAdapter {
 
   static toDTO(timeRecord: TimeRecord): TimeRecordResponseDTO {
     return {
+      id: timeRecord.id,
       employeeId: timeRecord.employeeId.value,
-      timeSheet: null, // TODO
+      record: timeRecord.record,
+      type: timeRecord.type
     };
-  }
-
-  private static itemToDTO(item: any): DailyRecordResponseDTO {
-    return null; // TODO
   }
 
   static toDTOList(orders: Array<TimeRecord>) {

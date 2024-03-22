@@ -8,11 +8,11 @@ import { ITimeRecordGateway } from '../../core/application/repositories/ITimeRec
 
 export class RecordsController {
   public async createOrder(
-    body: TimeRecordCreationDTO,
+    timeRecordCreationDTO: TimeRecordCreationDTO,
     dbConnection: IConnection,
   ): Promise<TimeRecordResponseDTO> {
     const timeRecordGateway: ITimeRecordGateway = new TimeRecordGateway(dbConnection);
-    const timeRecordToCreate = await TimeRecordAdapter.toDomain(body);
+    const timeRecordToCreate = await TimeRecordAdapter.toDomain(timeRecordCreationDTO);
     const createdTimeRecord = await TimeSheetUseCase.createRecord(
       timeRecordToCreate,
       timeRecordGateway,

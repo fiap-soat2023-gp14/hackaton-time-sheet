@@ -11,10 +11,20 @@ export default class TimeRecordGateway implements ITimeRecordGateway {
     this.dbConnection = database;
   }
 
-  create(order: TimeRecord): Promise<TimeRecord> {
-    //TODO IMPLEMENT
-        throw new Error('Method not implemented.');
+  async create(timeRecord: TimeRecord): Promise<TimeRecord> {
+    const timeRecordEntity = TimeRecordMapper.toEntity(timeRecord);
+
+    try {
+      await this.dbConnection
+          .getCollection(this.COLLECTION_NAME)
+          .insertOne(timeRecordEntity);
+      console.log('Time record created successfully.');
+      return Promise.resolve(TimeRecordMapper.toDomain(timeRecordEntity));
+    } catch (error) {
+      console.error('Error creating record:', error);
+      throw error;
     }
+  }
 
   getAllByEmployeeId(employeeId: string, params?: any): Promise<TimeRecord[]> {
     //TODO IMPLEMENT
