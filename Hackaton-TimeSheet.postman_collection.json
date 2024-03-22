@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "9fe4228a-2344-4a59-ac77-f2eb94255f0a",
+		"name": "Hackaton - Time sheet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20085261"
+	},
+	"item": [
+		{
+			"name": "records",
+			"item": [
+				{
+					"name": "time-sheet/records/:employeeId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/time-sheet/records/:employeeId",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"time-sheet",
+								"records",
+								":employeeId"
+							],
+							"variable": [
+								{
+									"key": "employeeId",
+									"value": "01234"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "time-sheet/records/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"employeeId\": \"12345\",\n    \"record\": \"2024-03-22T17:42:00\",\n    \"type\": \"IN\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri-gp14-hacka}}/time-sheet/records/",
+							"host": [
+								"{{uri-gp14-hacka}}"
+							],
+							"path": [
+								"time-sheet",
+								"records",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "time-sheet/reports/ - Relatório",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"employeeId\": \"123456\",\n    \"month\": \"03\",\n    \"year\": \"2024\",\n    \"email\": \"silvertonsg@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "{{uri-gp14-hacka}}/time-sheet/reports/",
+							"host": [
+								"{{uri-gp14-hacka}}"
+							],
+							"path": [
+								"time-sheet",
+								"reports",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
