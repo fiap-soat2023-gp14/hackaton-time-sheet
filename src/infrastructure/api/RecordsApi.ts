@@ -21,7 +21,6 @@ import { MessageProducer } from '../adapters/external/MessageProducer';
 export default class RecordsApi {
   constructor(
     @Inject(IConnection) private readonly dbConnection: IConnection,
-    private messageProducer: MessageProducer,
   ) {}
 
   @Get(':employeeId')
@@ -40,7 +39,6 @@ export default class RecordsApi {
   @Post()
   public async createOrder(
     @Res() response,
-    @Req() req,
     @Body() body: TimeRecordCreationDTO,
   ) {
     const recordsController = new RecordsController();
