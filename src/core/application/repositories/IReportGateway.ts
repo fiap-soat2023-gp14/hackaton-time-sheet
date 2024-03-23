@@ -1,9 +1,9 @@
 import { ReportRequestDTO } from '../dto/ReportRequestDTO';
-import {MessageProducer} from "../../../infrastructure/adapters/external/MessageProducer";
+import { MessageProducer } from "../../../infrastructure/adapters/external/MessageProducer";
 
 export interface IReportGateway {
   generateReport(
-      reportRequestDTO: ReportRequestDTO,
+    eportRequestDTO: ReportRequestDTO,
     messageProducer: MessageProducer,
   ): Promise<void>;
 }

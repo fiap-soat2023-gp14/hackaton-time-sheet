@@ -38,6 +38,7 @@ coverage
 # Environment
 .env
 .env.production
+local.env
 
 # Yarn
 .pnp.*

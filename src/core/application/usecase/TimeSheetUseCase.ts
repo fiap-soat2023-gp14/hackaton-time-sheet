@@ -1,14 +1,16 @@
 import { TimeRecord } from 'src/core/domain/entities/TimeRecord';
 import { ITimeRecordGateway } from '../repositories/ITimeRecordGateway';
+import { RecordFilter } from 'src/core/domain/entities/RecordFilter';
 
 export default class TimeSheetUseCase {
 
   public static async getAllRecordsByEmployeeId(
     employeeId: string,
-    gateway: ITimeRecordGateway,
+    params: RecordFilter,
+    timeRecordGateway: ITimeRecordGateway,
   ): Promise<Array<TimeRecord>> {
 
-    return await gateway.getAllByEmployeeId(employeeId);
+    return await timeRecordGateway.getAllByEmployeeId(employeeId, params);
   }
 
   public static async createRecord(

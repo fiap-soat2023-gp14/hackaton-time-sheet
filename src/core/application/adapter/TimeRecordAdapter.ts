@@ -23,7 +23,7 @@ export default class TimeRecordAdapter {
     };
   }
 
-  static toDTOList(orders: Array<TimeRecord>) {
-    return undefined;
+  static toDTOList(timeRecords: TimeRecord[]) {
+    return timeRecords.map((record) => this.toDTO(record));
   }
 }
