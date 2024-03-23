@@ -9,31 +9,31 @@ module.exports = {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
 
-  coverageDirectory: '../coverage',
-  coverageReporters: ['lcov'],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['cobertura', 'html', 'lcov', 'text', 'clover', 'text-summary'],
   collectCoverage: true,
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
     '!src/core/application/dto/**',
     '!src/**/*.module.ts',
-    '!src/**/*.spec.ts',
     '!src/core/domain/entities/**',
-    '!src/infrastructure/migration/**',
     '!src/main.ts',
+    '!src/infrastructure/adapters/gateway/mocks/**',
+    '!src/infrastructure/adapters/gateway/entity/**'
   ],
   coverageThreshold: {
     global: {
-      branches: 30,
-      functions: 30,
-      lines: 30,
-      statements: 30,
+      branches: 40,
+      functions: 40,
+      lines: 40,
+      statements: 40,
     },
   },
   moduleNameMapper: {
     '^src/(.*)$': '<rootDir>/src/$1'
   },
-  reporters: ['default',  ['jest-sonar', {
-    outputDirectory: '../coverage',
+  reporters: ['default', ['jest-sonar', {
+    outputDirectory: 'coverage',
     outputName: 'test-report.xml',
     reportedFilePath: 'relative'
   }]],
