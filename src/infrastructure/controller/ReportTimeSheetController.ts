@@ -5,7 +5,7 @@ import { MessageProducer } from '../adapters/external/MessageProducer';
 
 export class ReportTimeSheetController {
 
-  public static async receivePaymentFeedback(
+  public static async receiveReportFeedback(
     reportRequestDTO: ReportRequestDTO,
     reportGateway: IReportGateway,
     messageProducer: MessageProducer
