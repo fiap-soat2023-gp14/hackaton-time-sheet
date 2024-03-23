@@ -20,9 +20,7 @@ export default class RecordsApi {
     @Res() response,
     @Body() body: ReportRequestDTO,
   ) {
-    const timeRecordResponseDTO = await ReportTimeSheetController.generateReport(
-        body,
-        this.messageProducer);
+    await ReportTimeSheetController.generateReport(body, this.messageProducer);
     return response.status(HttpStatus.ACCEPTED).json();
   }
 
