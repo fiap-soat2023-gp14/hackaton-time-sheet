@@ -1,4 +1,4 @@
-# soat23-gp14-pedido
+# soat23-gp14-hackaton-time-sheet
 
 ## Description
 
